@@ -1,7 +1,7 @@
 from openai import AsyncOpenAI, OpenAI
 import time, json, asyncio
 
-from LauraGpt.instruction import system_instruct
+# from LauraGpt.instruction import system_instruct
 
 # from aiogram.methods import SendChatAction
 
@@ -25,4 +25,3 @@ async def answer_to_question(message_text):
     except:
         asyncio.sleep(20)
         await answer_to_question(message_text)
-        ы

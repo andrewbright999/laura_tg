@@ -13,7 +13,7 @@ from profinity_filter.cens import check
 
 # faq_thread = 3 #Royal fish
 faq_thread = 163 #Test
-folder_dir = "data\\tours\\chili\\"
+folder_dir = "tours-data\\tours\\chili\\"
 
 router = Router()
 router.message.filter(lambda message: message.message_thread_id == faq_thread)
