@@ -11,8 +11,8 @@ from commons import questions_list
 from profinity_filter.cens import check
 
 
-# faq_thread = 3 #Royal fish
-faq_thread = 163 #Test
+faq_thread = 3 #Royal fish
+# faq_thread = 163 #Test
 folder_dir = "tours-data\\tours\\chili\\"
 
 router = Router()
