@@ -1,6 +1,7 @@
-from openai import AsyncOpenAI, OpenAI
+from openai import AsyncOpenAI
 import time, json, asyncio
 
+from LauraGpt.instruction import system_instruct
 # from LauraGpt.instruction import system_instruct
 
 # from aiogram.methods import SendChatAction
@@ -8,7 +9,6 @@ import time, json, asyncio
 OPENAI_API_KEY = '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'
 
 client = AsyncOpenAI(api_key=OPENAI_API_KEY)
-
 messages=[{"role": "system","content": system_instruct}]
 
 async def answer_to_question(message_text):
