@@ -19,8 +19,7 @@ async def cmd_start(message: Message):
         print(message.message_thread_id)
         await message.answer(
             "Можете задавать мне вопросы)",
-            reply_markup=ReplyKeyboardRemove
-        )
+            reply_markup=ReplyKeyboardRemove())
 
 @router.message(F.video_note)
 async def on_video_note(message: Message):
@@ -32,7 +31,7 @@ async def on_video_note(message: Message):
     if (await definity_chek(text)) == "Да":
         await message.delete()
     else:
-        await message.answer(f'{await answer_to_question(message.text)}', reply_markup=ReplyKeyboardRemove)
+        await message.answer(f'{await answer_to_question(message.text)}', reply_markup=ReplyKeyboardRemove())
     try:
         os.remove (f"{message.message_id-2}.mp3")
     except:
@@ -48,7 +47,7 @@ async def on_voice(message: Message):
     if (await definity_chek(text)) == "Да":
         await message.delete()
     else:
-        await message.answer(f'{await answer_to_question(text)}', reply_markup=ReplyKeyboardRemove)
+        await message.answer(f'{await answer_to_question(text)}', reply_markup=ReplyKeyboardRemove())
     try:
         os.remove (f"{message.message_id-2}.mp3")
     except:
@@ -60,4 +59,4 @@ async def message_with_text(message: Message):
     if (await definity_chek(message.text)) == "Да":
         await message.delete()
     else:
-        await message.answer(f'{await answer_to_question(message.text)}', reply_markup=ReplyKeyboardRemove)
+        await message.answer(f'{await answer_to_question(message.text)}', reply_markup=ReplyKeyboardRemove())
