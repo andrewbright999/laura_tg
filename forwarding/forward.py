@@ -6,7 +6,7 @@ from aiogram.types import Message
 
 logging.basicConfig(level=logging.INFO)
 
-forward_thread = 166 #Royal Safari News
+forward_thread = 165 #Royal Safari News
 
 router = Router()
 router.message.filter(lambda message: message.message_thread_id == forward_thread)
