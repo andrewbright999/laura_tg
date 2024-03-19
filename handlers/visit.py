@@ -1,13 +1,12 @@
 from aiogram import Router, F
-from aiogram.filters import Command
-from aiogram.types import Message, ReplyKeyboardRemove
+from aiogram.types import Message
 
 router = Router() 
 router.message.filter(lambda message: message.from_user.is_bot == False)
 
 @router.message(F.new_chat_members)
 async def somebody_added(message: Message):
-    message.delete()
+    await message.delete()
     if len(message.new_chat_members)>1:
         user_names = []
         for user in message.new_chat_members:
@@ -25,4 +24,4 @@ async def somebody_added(message: Message):
 
 @router.message(F.old_chat_members)
 async def somebody_leave(message: Message):
-    message.delete()        
+    await message.delete()        

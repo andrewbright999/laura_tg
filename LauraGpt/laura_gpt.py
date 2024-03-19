@@ -1,10 +1,6 @@
 from openai import AsyncOpenAI
-import time, json, asyncio
-
+import time
 from LauraGpt.instruction import system_instruct
-# from LauraGpt.instruction import system_instruct
-
-# from aiogram.methods import SendChatAction
 
 OPENAI_API_KEY = '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'
 
@@ -23,5 +19,10 @@ async def answer_to_question(message_text):
             messages.pop(1)
         return response
     except:
-        asyncio.sleep(20)
+        time.sleep(10)
         await answer_to_question(message_text)
+
+async def get_text(audio): 
+    audio_file= open(audio, "rb")
+    transcription = await client.audio.transcriptions.create(model="whisper-1", file=audio_file)
+    return transcription.text
