@@ -21,7 +21,7 @@ async def start_msg(message: Message):
         now = datetime.now()
         current_time = now.strftime("%H:%M:%S")
         await asyncio.sleep(1)
-        if current_time in ['14:15:00','16:30:00','18:05:00']: 
+        if current_time in ['14:15:00','16:30:00','18:05:00']:
             albm = []
             while True:
                     post_id = get_post_id()
@@ -38,8 +38,7 @@ async def start_msg(message: Message):
                     except:
                         write_post_id(post_id+1)
 
-                    
-#  message_thread_id = message.message_thread_id,
+
 def get_post_id():
     id_file = open("IDFile.txt", "r")
     post_id = int(id_file.readline())
