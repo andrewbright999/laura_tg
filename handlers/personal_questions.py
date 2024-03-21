@@ -15,8 +15,7 @@ router.message.filter(lambda message: message.chat.type == "private")
 
 @router.message(Command("start")) 
 async def cmd_start(message: Message):
-    if message.message_thread_id == faq_thread:
-        print(message.message_thread_id)
+        print(message.chat.id)
         await message.answer(
             "Можете задавать мне вопросы)",
             reply_markup=ReplyKeyboardRemove())
