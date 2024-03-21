@@ -21,7 +21,7 @@ async def start_msg(message: Message):
         now = datetime.now()
         current_time = now.strftime("%H:%M:%S")
         await asyncio.sleep(1)
-        if current_time in ['14:15:00','16:30:00','18:05:00']:
+        if current_time in ['11:15:00','13:30:00','15:05:00']:
             albm = []
             while True:
                     post_id = get_post_id()
