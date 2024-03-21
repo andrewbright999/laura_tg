@@ -56,6 +56,7 @@ async def on_voice(message: Message):
 
 @router.message(F.text)
 async def message_with_text(message: Message):
+    print(message.chat.id)
     if (await definity_chek(message.text)) == "Да":
         await message.delete()
     else:
