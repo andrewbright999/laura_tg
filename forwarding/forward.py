@@ -40,13 +40,13 @@ async def start_msg(message: Message):
 
 
 def get_post_id():
-    id_file = open("IDFile.txt", "r")
+    id_file = open("IDFile.txt", "r+")
     post_id = int(id_file.readline())
     id_file.close()
     return post_id
 
 def write_post_id(id):
-    id_file = open("IDFile.txt", "w")
+    id_file = open("IDFile.txt", "w+")
     id_file.write(f"{id}")
     id_file.close()
 

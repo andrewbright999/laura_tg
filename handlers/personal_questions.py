@@ -6,9 +6,6 @@ from aiogram.types import Message, ReplyKeyboardRemove
 from LauraGpt.laura_gpt import answer_to_question, get_text
 from profinity_filter.cens import definity_chek
 
-
-faq_thread = 3 #Royal fish Laura chat
-
 router = Router()
 router.message.filter(lambda message: message.chat.type == "private")
 
