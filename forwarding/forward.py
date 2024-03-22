@@ -20,8 +20,9 @@ async def start_msg(message: Message):
     while True:
         now = datetime.now()
         current_time = now.strftime("%H:%M:%S")
-        await asyncio.sleep(1)
-        print(current_time)
+        await asyncio.sleep(60)
+        if current_time.endswith("1:00"):
+            print(current_time)
         if current_time in ['11:15:00','13:30:00','15:05:00']:
             albm = []
             while True:
