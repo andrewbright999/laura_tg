@@ -11,7 +11,7 @@ forward_thread = 165 #Royal Safari News
 router = Router()
 router.message.filter(lambda message: message.message_thread_id == forward_thread)
 
-from_chanal_id = "1001731383596" #Royal Safari
+from_chanal_id = -1001731383596 #Royal Safari
 
 @router.message(Command('start_forwarding'))
 async def start_msg(message: Message):
