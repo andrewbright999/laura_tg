@@ -43,6 +43,7 @@ async def start_msg(message: Message):
 @router.message(Command('forward'))
 async def start_msg(message: Message):
     await message.bot.delete_message(chat_id=message.chat.id,message_id=message.message_id)
+    albm = []
     while True:
             post_id = get_post_id()
             try:  
