@@ -49,7 +49,7 @@ async def start_msg(message: Message):
             try:  
                 msg = await message.bot.forward_message(chat_id=1263494893, from_chat_id=from_chanal_id, message_id=post_id)
                 if (msg.caption != None) & (albm != []):
-                    await message.copy_messages(chat_id=message.chat.id, message_thread_id=message.message_thread_id, from_chat_id=from_chanal_id, message_ids=albm)
+                    await message.bot.copy_messages(chat_id=message.chat.id, message_thread_id=message.message_thread_id, from_chat_id=from_chanal_id, message_ids=albm)
                     albm = []
                     write_post_id(post_id)
                     break
