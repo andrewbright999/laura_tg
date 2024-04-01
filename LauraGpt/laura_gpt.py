@@ -9,7 +9,7 @@ messages=[{"role": "system","content": club_instruct}]
 
 async def answer_to_question(message_text):
     messages.extend([{"role": "user","content": message_text}])
-    chat_completion = await client.chat.completions.create(model="gpt-3.5-turbo",
+    chat_completion = await client.chat.completions.create(model="gpt-4",
                                                         messages=messages,
                                                                    temperature =  0.5)
     try:

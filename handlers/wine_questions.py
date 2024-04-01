@@ -7,7 +7,7 @@ from LauraGpt.laura_gpt_wines import answer_to_question, get_text
 from profinity_filter.cens import definity_chek
 
 
-wine_thread = 235 #Royal fish Laura chat, Wines
+wine_thread = 235 #Royal fish Laura chat
 
 router = Router()
 router.message.filter(lambda message: message.message_thread_id == wine_thread)
