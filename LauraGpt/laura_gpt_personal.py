@@ -9,7 +9,7 @@ messages=[{"role": "system","content": club_instruct}]
 
 async def answer_to_question(message_text):
     messages.extend([{"role": "user","content": message_text}])
-    chat_completion = await client.chat.completions.create(model="gpt-4",
+    chat_completion = await client.chat.completions.create(model="gpt-4-turbo-preview",
                                                         messages=messages,
                                                                    temperature =  0.5)
     try:
@@ -17,7 +17,7 @@ async def answer_to_question(message_text):
         messages.extend([{"role":"assistant","content": response}])   
         if len(messages) > 8:
             messages.pop(1)
-        return response
+        return response.replace("**", "*")
     except:
         time.sleep(10)
         await answer_to_question(message_text)
