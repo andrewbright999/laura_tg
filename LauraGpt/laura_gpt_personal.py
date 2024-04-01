@@ -1,11 +1,11 @@
 from openai import AsyncOpenAI
 import time
-from LauraGpt.instruction import system_instruct
+from LauraGpt.instruction import club_instruct
 
 OPENAI_API_KEY = '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'
 
 client = AsyncOpenAI(api_key=OPENAI_API_KEY)
-messages=[{"role": "system","content": system_instruct}]
+messages=[{"role": "system","content": club_instruct}]
 
 async def answer_to_question(message_text):
     messages.extend([{"role": "user","content": message_text}])
