@@ -7,7 +7,7 @@ TG_TOKEN =  '6440298772:AAGL48-IZCl5D2Lxcn_VHAfAfKnk8GN3_hI' #Laura GPT
 
 logging.basicConfig(level=logging.INFO)
 
-bot = Bot(token=TG_TOKEN, parse_mode="HTML")
+bot = Bot(token=TG_TOKEN, parse_mode="markdown")
 dp = Dispatcher()
 
 
