@@ -1,7 +1,7 @@
 import asyncio, logging
 from datetime import datetime
 from aiogram import Router
-from aiogram.filters import Command
+from aiogram.filters import Command, CommandObject
 from aiogram.types import Message
 
 logging.basicConfig(level=logging.INFO)
@@ -58,6 +58,12 @@ async def start_msg(message: Message):
                     write_post_id(post_id+1)        
             except:
                 write_post_id(post_id+1)
+                
+@router.message(Command('writeid'))
+async def laura_message(message: Message, command: CommandObject):
+    await message.delete()
+    id = command.args
+    write_post_id(id)
 
 
 def get_post_id():
