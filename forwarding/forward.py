@@ -34,11 +34,11 @@ async def start_msg(message: Message):
                 write_post_id(post_id+1)
                 
                 
-@router.message(Command('fid'))
+@router.message(Command('Fid'))
 async def start_msg(message: Message, command: CommandObject):
     await message.bot.delete_message(chat_id=message.chat.id,message_id=message.message_id)
     albm = []
-    post_id = command.args
+    post_id = int(command.args)
     while True:
             try:  
                 msg = await message.bot.forward_message(chat_id=1263494893, from_chat_id=from_chanal_id, message_id=post_id)
