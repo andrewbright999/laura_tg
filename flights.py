@@ -151,26 +151,26 @@ def create_messages(best_flights):
                     points.append(details["to"]["title"])
                 else:
                     durotion.append(seconds_to_hours(details["duration"]))
-            message = f"""Вылет: {points.pop(0)} - {departure_time} 
-Прилет: {points.pop(-1)} - {arrival_time}
-Время полета: {flight_time}
-Пересадки:\n"""
+            message = f"""<b>Вылет:</b> <code>{points.pop(0)}</code> - {departure_time} 
+<b>Прилет:</b> <code>{points.pop(-1)}</code> - {arrival_time}
+<b>Время полета:</b> <u>{flight_time}</u>
+<b>Пересадки:</b>\n"""
             points = points[::2]
             for i in range(len(points)):
                 if points[i] not in visa_list:
-                    message = message + f"""    {points[i]} {durotion[i]}\n"""
+                    message = message + f"""    <code>{points[i]}</code> {durotion[i]}\n"""
                 else: 
                     for type in visa:
                         if points[i] in visa[type]:
                             print(visa[type])
-                            message = message + f"""    {points[i]} {durotion[i]} ({type} виза)\n"""
+                            message = message + f"""    <code>{points[i]}</code> {durotion[i]} ({type} виза)\n"""
             messages.append(message)
         else:
             title = item['thread']['title']
             title = title.split(" — ", 1)
-            message = f"""Вылет: {title[0]} - {departure_time} 
-Прилет: {title[-1]} - {arrival_time}
-Время полета: {flight_time}\n"""
+            message = f"""<b>Вылет:</b> <code>{title[0]}</code> - {departure_time} 
+<b>Прилет:</b> <code>{title[-1]}</code> - {arrival_time}
+Время полета: <u>{flight_time}</u>\n"""
             messages.append(message)
     return messages     
     
