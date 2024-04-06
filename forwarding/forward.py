@@ -14,32 +14,6 @@ router.message.filter(lambda message: message.message_thread_id == forward_threa
 from_chanal_id = -1001731383596 #Royal Safari
 
 
-async def start_msg(message: Message):
-    await message.bot.delete_message(chat_id=message.chat.id,message_id=message.message_id)
-    print("Run")
-    while True:
-        now = datetime.now()
-        current_time = now.strftime("%H:%M:%S")
-        await asyncio.sleep(60)
-        if current_time.endswith("1:00"):
-            print(current_time)
-        if current_time in ['11:15:00','13:30:00','15:05:00']:
-            albm = []
-            while True:
-                    post_id = get_post_id()
-                    try:  
-                        msg = await message.bot.forward_message(chat_id=1263494893, from_chat_id=from_chanal_id, message_id=post_id)
-                        if (msg.caption != None) & (albm != []):
-                            await message.copy_messages(chat_id=message.chat.id, message_thread_id=message.message_thread_id, from_chat_id=from_chanal_id, message_ids=albm)
-                            albm = []
-                            write_post_id(post_id)
-                            break
-                        else: 
-                            albm.append(post_id)      
-                            write_post_id(post_id+1)        
-                    except:
-                        write_post_id(post_id+1)
-
 @router.message(Command('forward'))
 async def start_msg(message: Message):
     await message.bot.delete_message(chat_id=message.chat.id,message_id=message.message_id)
@@ -58,6 +32,26 @@ async def start_msg(message: Message):
                     write_post_id(post_id+1)        
             except:
                 write_post_id(post_id+1)
+                
+                
+@router.message(Command('fid'))
+async def start_msg(message: Message, command: CommandObject):
+    await message.bot.delete_message(chat_id=message.chat.id,message_id=message.message_id)
+    albm = []
+    post_id = command.args
+    while True:
+            try:  
+                msg = await message.bot.forward_message(chat_id=1263494893, from_chat_id=from_chanal_id, message_id=post_id)
+                if (msg.caption != None) & (albm != []):
+                    await message.bot.copy_messages(chat_id=message.chat.id, message_thread_id=message.message_thread_id, from_chat_id=from_chanal_id, message_ids=albm)
+                    albm = []
+                    break
+                else: 
+                    albm.append(post_id)      
+                    post_id=post_id+1        
+            except:
+                post_id=post_id+1                
+                
                 
 @router.message(Command('writeid'))
 async def laura_message(message: Message, command: CommandObject):

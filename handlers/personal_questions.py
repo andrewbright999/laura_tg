@@ -13,7 +13,7 @@ router.message.filter(lambda message: message.chat.type == "private")
 @router.message(Command("start")) 
 async def cmd_start(message: Message):
         print(message.chat.id)
-        await message.answer("Здравствуйте, я виртуальная помошница Лаура. Можете мне задавать вопросы о клубе, и я с радостью на них отвечу)",
+        await message.answer("Здравствуйте, я виртуальная помошница Лаура. Можете мне задавать вопросы о клубе, и я с радостью на них отвечу 😘",
             reply_markup=ReplyKeyboardRemove())
 
 @router.message(F.video_note)
