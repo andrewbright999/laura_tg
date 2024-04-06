@@ -28,7 +28,8 @@ async def start_msg(message: Message, command: CommandObject):
                 break
             else: 
                 albm.append(post_id)      
-                post_id=post_id+1        
+                post_id=post_id+1      
+            await msg.delete()     
         except Exception as E:
             print(E)
             post_id=post_id+1                

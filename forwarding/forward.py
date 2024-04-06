@@ -29,7 +29,8 @@ async def start_msg(message: Message):
                     break
                 else: 
                     albm.append(post_id)      
-                    write_post_id(post_id+1)        
+                    write_post_id(post_id+1)     
+                await msg.delete()   
             except:
                 write_post_id(post_id+1)
                 
