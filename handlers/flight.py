@@ -9,7 +9,7 @@ router.message.filter(lambda message: message.message_thread_id == 563)
 
 @router.message(F.text)
 async def flight_message(message: Message):
-    await message.answer("<code>Сейчас что-нибудь найду</code>😉🌎✈️", parse_mode="HTML")
+    await message.answer("<i>Сейчас что-нибудь найду</i>😉🌎✈️", parse_mode="HTML")
     flights = await search_flights(message.text)
     await message.bot.delete_message(chat_id=message.chat.id, message_id=message.message_id+1)
     print(*flights)
