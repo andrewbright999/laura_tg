@@ -28,7 +28,10 @@ async def laura_copy_message(message: Message, state: FSMContext):
         await message.delete()  
         await state.set_state(sendMessage.get_mess)
         
-        
+@router.message(Command('Mid'))
+async def laura_copy_message(message: Message):
+    mid = str(message.message_id)
+    await message.answer(mid)
     
 @router.message(sendMessage.get_mess)
 async def laura_copy_message(message:Message, state: FSMContext):
