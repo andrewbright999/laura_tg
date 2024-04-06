@@ -1,7 +1,7 @@
 import asyncio, logging, sys
 from aiogram import Bot, Dispatcher
 from handlers import flight_handler, questions, visit, admins, chat, personal_questions, wine_questions
-from forwarding import forward
+from forwarding import forward, expedition_forward
 
 
 TG_TOKEN =  '6440298772:AAGL48-IZCl5D2Lxcn_VHAfAfKnk8GN3_hI' #Laura GPT
@@ -16,7 +16,7 @@ dp = Dispatcher()
 
 async def main() -> None:
     
-    dp.include_routers(admins.router, questions.router, visit.router, chat.router, forward.router, personal_questions.router, wine_questions.router, flight_handler.router)
+    dp.include_routers(admins.router, questions.router, visit.router, chat.router, forward.router, personal_questions.router, wine_questions.router, flight_handler.router, expedition_forward.router)
     await dp.start_polling(bot)
 
 
