@@ -34,7 +34,7 @@ async def start_msg(message: Message):
                 write_post_id(post_id+1)
                 
                 
-@router.message(Command('Fid'))
+@router.message(Command('fid'))
 async def start_msg(message: Message, command: CommandObject):
     await message.bot.delete_message(chat_id=message.chat.id,message_id=message.message_id)
     albm = []

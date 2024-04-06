@@ -14,7 +14,7 @@ router.message.filter(lambda message: message.message_thread_id == forward_threa
 from_chanal_id = -1263494893 #My personal
                 
                 
-@router.message(Command('Fid'))
+@router.message(Command('fid'))
 async def start_msg(message: Message, command: CommandObject):
     await message.bot.delete_message(chat_id=message.chat.id,message_id=message.message_id)
     albm = []
