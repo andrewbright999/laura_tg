@@ -29,7 +29,8 @@ async def start_msg(message: Message, command: CommandObject):
                 else: 
                     albm.append(post_id)      
                     post_id=post_id+1        
-            except:
+            except Exception as E:
+                print(E)
                 post_id=post_id+1                
                 
 
