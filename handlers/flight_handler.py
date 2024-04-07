@@ -17,3 +17,4 @@ async def flight_message(message: Message):
             await message.answer(flight, parse_mode="HTML")
     else:
         await message.answer("Я не смогла ничего найти 🙈🙈🙈, попробуйте еще разок")
+    
