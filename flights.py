@@ -169,7 +169,7 @@ def create_messages(best_flights):
                         if points[i] in visa[type]:
                             print(visa[type])
                             message = message + f"""    <code>{points[i]}</code> {durotion[i]} 
-    <b>><i>Нужна {type} виза!</b>></i>\n"""
+    <b>><i>Нужна {type} виза!</i></b>\n"""
                 message = message + f"""    <b>Вылет:</b> <i>{company[i]}</i> <b>{numbers[i]}</b>\n"""
             messages.append(message)
         else:
