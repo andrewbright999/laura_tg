@@ -144,14 +144,21 @@ def create_messages(best_flights):
         if item["has_transfers"] == True: # Если есть пересадки
             points = []
             durotion = []
+            company = []
+            numbers = []
             for i in range(len(item["details"])): # Перебор всех пересадок 
                 details = item["details"][i]
                 if (i % 2 == 0):
                     points.append(details["from"]["title"]) 
                     points.append(details["to"]["title"])
+                    numbers.append(details["thread"]["number"])
+                    company.append(details["thread"]["carrier"]["title"])
                 else:
                     durotion.append(seconds_to_hours(details["duration"]))
-            message = f"""<b>Вылет:</b> <code>{points.pop(0)}</code> - {departure_time} 
+            print(company,numbers)
+            message = f"""
+<b>Вылет:</b> <code>{points.pop(0)}</code> - {departure_time} 
+     <i>{company.pop(0)}</i> <b>{numbers.pop(0)}</b> 
 <b>Прилет:</b> <code>{points.pop(-1)}</code> - {arrival_time}
 <b>Время полета:</b> <u>{flight_time}</u>
 <b>Пересадки:</b>\n"""
@@ -164,6 +171,7 @@ def create_messages(best_flights):
                         if points[i] in visa[type]:
                             print(visa[type])
                             message = message + f"""    <code>{points[i]}</code> {durotion[i]} ({type} виза)\n"""
+                message = message + f"""    <b>Вылет:</b> <i>{company[i]}</i> <b>{numbers[i]}<b>\n"""
             messages.append(message)
         else:
             title = item['thread']['title']
@@ -197,3 +205,7 @@ async def search_flights(message_text):
     best_flights = search(from_iata, to_iata, flight_date)
     answer = create_messages(best_flights)
     return answer
+
+res = asyncio.run(search_flights("из сочи в чили на завтра"))
+
+print(*res)
