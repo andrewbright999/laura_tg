@@ -155,7 +155,6 @@ def create_messages(best_flights):
                     company.append(details["thread"]["carrier"]["title"])
                 else:
                     durotion.append(seconds_to_hours(details["duration"]))
-            print(company,numbers)
             message = f"""<b>Вылет:</b> <code>{points.pop(0)}</code> - {departure_time} 
      <i>{company.pop(0)}</i> <b>{numbers.pop(0)}</b> 
 <b>Прилет:</b> <code>{points.pop(-1)}</code> - {arrival_time}
