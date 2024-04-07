@@ -175,8 +175,12 @@ def create_messages(best_flights):
             messages.append(message)
         else:
             title = item['thread']['title']
+            number = item['thread']['number']
+            company = item["thread"]["carrier"]["title"]
             title = title.split(" — ", 1)
-            message = f"""<b>Вылет:</b> <code>{title[0]}</code> - {departure_time} 
+            message = f"""
+<b>Вылет:</b> <code>{title[0]}</code> - {departure_time} 
+      <i>{company}</i> <b>{number}</b> 
 <b>Прилет:</b> <code>{title[-1]}</code> - {arrival_time}
 Время полета: <u>{flight_time}</u>\n"""
             messages.append(message)
