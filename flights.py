@@ -210,6 +210,6 @@ async def search_flights(message_text):
     answer = create_messages(best_flights)
     return answer
 
-res = asyncio.run(search_flights("из сочи в чили на завтра"))
+res = asyncio.run(search_flights("из сочи в Маями на завтра"))
 
 print(*res)
