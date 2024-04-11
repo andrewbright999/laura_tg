@@ -33,7 +33,7 @@ async def on_video_note(message: Message):
         pass
 
 
-@router.message(F.video)
+@router.message(F.voice)
 async def on_voice(message: Message):
     file_id = message.voice.file_id
     file = await message.bot.get_file(file_id)
