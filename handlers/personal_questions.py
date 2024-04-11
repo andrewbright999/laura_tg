@@ -32,7 +32,8 @@ async def on_video_note(message: Message):
     except:
         pass
 
-@router.message(F.voice)
+
+@router.message(F.video)
 async def on_voice(message: Message):
     file_id = message.voice.file_id
     file = await message.bot.get_file(file_id)
