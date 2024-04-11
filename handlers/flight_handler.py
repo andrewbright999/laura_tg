@@ -7,7 +7,7 @@ router = Router()
 router.message.filter(lambda message: message.message_thread_id == 563)
 
 
-@router.message(F.text)
+@router.message(F.video)
 async def flight_message(message: Message):
     await message.answer("<i>Сейчас что-нибудь найду</i>😉🌎✈️", parse_mode="HTML")
     flights = await search_flights(message.text)
