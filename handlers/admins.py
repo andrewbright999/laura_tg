@@ -39,7 +39,7 @@ async def laura_copy_message(message:Message, state: FSMContext):
     await state.clear()
     
     
-@router.message(F.Video)
+@router.message(F.video)
 async def laura_copy_message(message: Message):
     member = await message.bot.get_chat_member(chat_id=message.chat.id, user_id=message.from_user.id)
     if member.status in ["administrator", "creator"]:
