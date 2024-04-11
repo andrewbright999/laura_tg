@@ -45,7 +45,7 @@ async def laura_copy_message(message:Message, state: FSMContext):
 @router.message(F.video)
 async def laura_copy_message(message: Message):
     member = await message.bot.get_chat_member(chat_id=message.chat.id, user_id=message.from_user.id)
-    if member.status in ["administrator", "creator"]:
+    if (member.status in ["administrator", "creator"]) or (message.chat.id == 1263494893):
         # await message.delete()
         file_id = message.video.file_id
         file = await message.bot.get_file(file_id)
