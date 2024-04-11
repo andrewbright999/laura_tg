@@ -1,8 +1,11 @@
 from aiogram import  Router, F
-from aiogram.types import Message
+from aiogram.types import Message, FSInputFile
 from aiogram.filters import Command, CommandObject, StateFilter
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import StatesGroup, State
+
+from moviepy.editor import *
+from moviepy.video.fx.all import crop
 
 
 class sendMessage(StatesGroup):
@@ -38,11 +41,20 @@ async def laura_copy_message(message:Message, state: FSMContext):
     await message.delete()  
     await state.clear()
     
-    
+        
 @router.message(F.video)
 async def laura_copy_message(message: Message):
     member = await message.bot.get_chat_member(chat_id=message.chat.id, user_id=message.from_user.id)
     if member.status in ["administrator", "creator"]:
-        await message.delete()
-        video = message.video.file_id
-        await message.answer_video_note(video_note=video)
+        # await message.delete()
+        file_id = message.video.file_id
+        file = await message.bot.get_file(file_id)
+        await message.bot.download_file(file.file_path, "video.mp4")
+        clip = VideoFileClip("video.mp4")
+        clip_resized = clip.resize(width=399)
+        cropped_clip = crop(clip_resized, x1 = 1, y1 = 1,  width = 399, height = 399)
+        clip_resized = cropped_clip.resize(width=299)
+        clip_resized.write_videofile("video1.mp4")
+        photo = FSInputFile("video1.mp4", "rb")
+        # await message.bot.send_video_note(chat_id=message.chat.id,video_note=video)
+        await message.bot.send_video_note(chat_id=message.chat.id,video_note=photo)
