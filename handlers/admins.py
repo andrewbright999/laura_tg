@@ -50,6 +50,7 @@ async def laura_copy_message(message: Message):
         file_id = message.video.file_id
         file = await message.bot.get_file(file_id)
         await message.bot.download_file(file.file_path, "video.mov")
+        await message.delete()
         clip = VideoFileClip("video.mov")
         clip_resized = clip.resize(width=299)
         cropped_clip = crop(clip_resized, x1 = 1, y1 = 1,  width = 399, height = 399)
