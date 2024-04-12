@@ -55,6 +55,5 @@ async def laura_copy_message(message: Message):
         cropped_clip = crop(clip_resized, x1 = 1, y1 = 1,  width = 399, height = 399)
         clip_resized = cropped_clip.resize(width=299)
         clip_resized.write_videofile("video1.mov",codec="libx264")
-        photo = FSInputFile("video1.mov", "rb")
-        # await message.bot.send_video_note(chat_id=message.chat.id,video_note=video)
-        await message.bot.send_video_note(chat_id=message.chat.id,video_note=photo)
+        video = FSInputFile("video1.mov", "rb")
+        await message.answer_video_note(video_note=video)
