@@ -11,6 +11,9 @@ from moviepy.video.fx.all import crop
 class sendMessage(StatesGroup):
     get_mess = State()
     
+class sendRound(StatesGroup):
+    get_round = State()
+
 
 router = Router()
 
@@ -41,9 +44,18 @@ async def laura_copy_message(message:Message, state: FSMContext):
     await message.delete()  
     await state.clear()
     
+    
         
-@router.message(F.video)
-async def laura_copy_message(message: Message):
+@router.message(Command('round'))
+async def get_video(message: Message, state: FSMContext):
+    await message.bot.copy_message(chat_id=message.chat.id, from_chat_id=message.chat.id, message_id=message.message_id,)
+    await message.delete()  
+    await state.set_state(sendRound.get_round)
+        
+        
+        
+@router.message(F.video, sendRound.get_round)
+async def laura_copy_message(message: Message, state: FSMContext):
     member = await message.bot.get_chat_member(chat_id=message.chat.id, user_id=message.from_user.id)
     if (member.status in ["administrator", "creator"]) or (message.chat.id == 1263494893):
         # await message.delete()
@@ -58,3 +70,4 @@ async def laura_copy_message(message: Message):
         clip_resized.write_videofile("video1.mov",codec="libx264")
         video = FSInputFile("video1.mov", "rb")
         await message.answer_video_note(video_note=video)
+        await state.clear()
