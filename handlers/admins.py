@@ -48,7 +48,6 @@ async def laura_copy_message(message:Message, state: FSMContext):
         
 @router.message(Command('round'))
 async def get_video(message: Message, state: FSMContext):
-    await message.bot.copy_message(chat_id=message.chat.id, from_chat_id=message.chat.id, message_id=message.message_id,)
     await message.delete()  
     await state.set_state(sendRound.get_round)
         
