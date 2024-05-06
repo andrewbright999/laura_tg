@@ -18,8 +18,7 @@ dp = Dispatcher()
 
 async def main() -> None:
     
-    dp.include_routers(admins.router)
-                    #    , questions.router, visit.router, chat.router, forward.router, personal_questions.router, wine_questions.router, flight_handler.router, expedition_forward.router)
+    dp.include_routers(admins.router, questions.router, visit.router, chat.router, forward.router, personal_questions.router, wine_questions.router, flight_handler.router, expedition_forward.router)
     await dp.start_polling(bot)
 
 
