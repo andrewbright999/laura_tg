@@ -4,7 +4,9 @@ from handlers import flight_handler, questions, visit, admins, chat, personal_qu
 from forwarding import forward, expedition_forward
 
 
-TG_TOKEN =  '6440298772:AAGL48-IZCl5D2Lxcn_VHAfAfKnk8GN3_hI' #Laura GPT
+# TG_TOKEN =  '6440298772:AAGL48-IZCl5D2Lxcn_VHAfAfKnk8GN3_hI' #Laura GPT
+TG_TOKEN = '5044457105:AAGLWtS5-_Ck9mOroE8LSKIf2vIfBvgBpUQ' #abobus
+
 
 
 logging.basicConfig(level=logging.INFO)
@@ -16,7 +18,8 @@ dp = Dispatcher()
 
 async def main() -> None:
     
-    dp.include_routers(admins.router, questions.router, visit.router, chat.router, forward.router, personal_questions.router, wine_questions.router, flight_handler.router, expedition_forward.router)
+    dp.include_routers(admins.router)
+                    #    , questions.router, visit.router, chat.router, forward.router, personal_questions.router, wine_questions.router, flight_handler.router, expedition_forward.router)
     await dp.start_polling(bot)
 
 
