@@ -4,8 +4,8 @@ from handlers import flight_handler, questions, visit, admins, chat, personal_qu
 from forwarding import forward, expedition_forward
 
 
-# TG_TOKEN =  '6440298772:AAGL48-IZCl5D2Lxcn_VHAfAfKnk8GN3_hI' #Laura GPT
-TG_TOKEN = '5044457105:AAGLWtS5-_Ck9mOroE8LSKIf2vIfBvgBpUQ' #abobus
+TG_TOKEN =  '6440298772:AAGL48-IZCl5D2Lxcn_VHAfAfKnk8GN3_hI' #Laura GPT
+# TG_TOKEN = '5044457105:AAGLWtS5-_Ck9mOroE8LSKIf2vIfBvgBpUQ' #abobus
 
 
 
