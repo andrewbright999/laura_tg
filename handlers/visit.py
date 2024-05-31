@@ -6,6 +6,9 @@ from aiogram.types import ChatMemberUpdated
 router = Router() 
 router.message.filter(lambda message: message.from_user.is_bot == False)
 
+@router.message(F.new_chat_members)
+async def somebody_added(message: Message):
+    await message.delete()
 
 @router.chat_member.update(ChatMemberUpdatedFilter(IS_NOT_MEMBER))
 async def handle_member_leave(event: ChatMemberUpdated):
