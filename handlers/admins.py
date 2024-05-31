@@ -25,6 +25,11 @@ messages = []
 router = Router()
 
 
+@router.message(Command('mid'))
+async def laura_get_message(message: Message):
+    mid = str(message.message_id)
+    await message.answer(mid)
+    
 @router.message(Command('chat_id'))
 async def laura_message(message: Message, command: CommandObject):
     chat_id = message.chat.id
@@ -89,10 +94,6 @@ async def laura_copy_message(message: Message, state: FSMContext):
         await message.delete()  
         await state.set_state(sendMessage.get_mess)
 
-@router.message(Command('mid'),sendMessage.get_mess)
-async def laura_copy_message(message: Message):
-    mid = str(message.message_id)
-    await message.answer(mid)
     
 # @router.message(sendMessage.get_mess)
 # async def laura_copy_message(message:Message, state: FSMContext):
