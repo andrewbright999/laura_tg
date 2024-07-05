@@ -1,19 +1,16 @@
-from openai import AsyncOpenAI, OpenAI
-import time, json, asyncio
+from openai import AsyncOpenAI
+import time
+from LauraGpt.instruction import club_instruct
+from config import OPENAI_API_KEY
 
-from LauraGpt.instruction import system_instruct
 
-# from aiogram.methods import SendChatAction
-
-OPENAI_API_KEY = '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'
 
 client = AsyncOpenAI(api_key=OPENAI_API_KEY)
-
-messages=[{"role": "system","content": system_instruct}]
+messages=[{"role": "system","content": club_instruct}]
 
 async def answer_to_question(message_text):
     messages.extend([{"role": "user","content": message_text}])
-    chat_completion = await client.chat.completions.create(model="gpt-3.5-turbo",
+    chat_completion = await client.chat.completions.create(model="gpt-4-turbo-preview",
                                                         messages=messages,
                                                                    temperature =  0.5)
     try:
@@ -23,6 +20,10 @@ async def answer_to_question(message_text):
             messages.pop(1)
         return response
     except:
-        asyncio.sleep(20)
+        time.sleep(10)
         await answer_to_question(message_text)
-        ы
+
+async def get_text(audio): 
+    audio_file= open(audio, "rb")
+    transcription = await client.audio.transcriptions.create(model="whisper-1", file=audio_file)
+    return transcription.text
