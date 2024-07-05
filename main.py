@@ -2,11 +2,7 @@ import asyncio, logging, sys
 from aiogram import Bot, Dispatcher
 from handlers import flight_handler, questions, visit, admins, chat, personal_questions, wine_questions
 from forwarding import forward, expedition_forward
-
-
-TG_TOKEN =  '6440298772:AAEtBIV14hGAmsU2Wy0WCo7vs72-aSfd7KQ' #Laura GPT
-# TG_TOKEN = '5044457105:AAGLWtS5-_Ck9mOroE8LSKIf2vIfBvgBpUQ' #abobus
-
+from config import TG_TOKEN
 
 
 logging.basicConfig(level=logging.INFO)
