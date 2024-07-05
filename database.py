@@ -1,0 +1,1 @@
+DATABASE_URL="postgres://udpo93mtr8h26l:pb78eead19a856cad4e1ad271ae68f9c416fa1de46eca6a46251c629ebd1d262f@c2dr1dq7r4d57i.cluster-czz5s0kz4scl.eu-west-1.rds.amazonaws.com:5432/dbt5rt6amfqr0l"
