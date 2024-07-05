@@ -1,8 +1,7 @@
 from openai import AsyncOpenAI
 import time, json, os
 from LauraGpt.instruction import club_instruct
-
-OPENAI_API_KEY = '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'
+from config import OPENAI_API_KEY
 
 client = AsyncOpenAI(api_key=OPENAI_API_KEY)
 

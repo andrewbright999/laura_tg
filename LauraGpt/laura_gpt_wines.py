@@ -1,8 +1,8 @@
 from openai import AsyncOpenAI
 import time
 from LauraGpt.instruction import wine_instruct
+from config import OPENAI_API_KEY
 
-OPENAI_API_KEY = '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'
 
 client = AsyncOpenAI(api_key=OPENAI_API_KEY)
 messages=[{"role": "system","content": wine_instruct}]

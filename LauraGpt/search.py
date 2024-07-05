@@ -1,8 +1,7 @@
 from openai import AsyncOpenAI
 import requests
 import asyncio
-
-OPENAI_API_KEY = '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'
+from config import OPENAI_API_KEY
 
 client = AsyncOpenAI(api_key=OPENAI_API_KEY)
 
@@ -19,9 +18,6 @@ async def get_aiata(message_text):
     messages=[{"role": "system","content": "You work as an assistant at a travel agency. A message will be sent to you about the place where the person wants to fly by plane. Find the nearest major airport or city to this place and send just its IATA code, separating them with commas"},
               {"role": "user","content": message_text}]
     first_iata = await response(messages)
-    # print(first_iata)
-    # messages=[{"role": "system","content": "Проверь если такого кода iata нет, отправь в ответ настоящие коды через запятую, убери лишние комментарии"},{"role": "user","content": first_iata}]
-    # final_iata = await response(messages)
     return first_iata.split(",")
     
 async def get_data(message_text):  
@@ -29,17 +25,3 @@ async def get_data(message_text):
               {"role": "user","content": message_text}]
     data = await response(messages)
     return data.split(',')
-# aiata = asyncio.run(get_aiata("Чили")).replace(" ","").split(",")
-# print(aiata)
-# print()
-
-    # return await response(response_text)
-# print("Политика "+politic_and_religiy_chek(message))
-
-# try:
-    # print("Мат: "+definity_chek(message))
-    # print("Политика "+politic_and_religiy_chek(message))
-# except:
-#     time.sleep(60)
-#     print("Мат: "+definity_chek(message))
-#     print("Политика "+politic_and_religiy_chek(message))

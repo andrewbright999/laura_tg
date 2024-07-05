@@ -2,12 +2,9 @@ import requests, asyncio, logging
 import time
 from datetime import datetime, date, timedelta
 from LauraGpt.search import get_aiata, get_data
-
+from config import YA_TOKEN
 
 logging.basicConfig(level=logging.INFO)
-
-
-APIKEY = "fd080359-0a35-447d-b578-81bc767611fe"
 
 
 mounts = {"01": "янв.","02": "февр.","03":"марта","04": "апр.","05": "мая","06": "июня","07": "июля","08": "авг.","09": "сент.","10": "окт.","11": "нояб.","12": "дек."}
@@ -97,7 +94,7 @@ def get_stations():
 def search(from_station_iata,to_station_iata, flight_date):
     for from_station in from_station_iata:
         for to_station in to_station_iata:
-            url = (f"https://api.rasp.yandex.net/v3.0/search/?apikey={APIKEY}&format=json&from={from_station}&system=iata&to={to_station}&transfers=True&lang=ru_RU&result_timezone=Europe/Moscow&page=1&date={flight_date}")
+            url = (f"https://api.rasp.yandex.net/v3.0/search/?apikey={YA_TOKEN}&format=json&from={from_station}&system=iata&to={to_station}&transfers=True&lang=ru_RU&result_timezone=Europe/Moscow&page=1&date={flight_date}")
             res = requests.get(url)
             print(res)
             data = res.json()

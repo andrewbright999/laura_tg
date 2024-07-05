@@ -1,11 +1,12 @@
 from openai import AsyncOpenAI
+from config import OPENAI_API_KEY
+from config import OPENAI_API_KEY
 
-OPENAI_API_KEY = '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'
 client = AsyncOpenAI(api_key=OPENAI_API_KEY)
 
 headers = {
     'Content-Type': 'application/json',
-    'Authorization': 'Bearer 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'
+    'Authorization': f'Bearer {OPENAI_API_KEY}'
 }
 
 async def response(response_text):

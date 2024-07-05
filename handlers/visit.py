@@ -3,12 +3,15 @@ from aiogram.types import Message
 from aiogram.filters import ChatMemberUpdatedFilter, IS_NOT_MEMBER
 from aiogram.types import ChatMemberUpdated
 
-router = Router() 
-router.message.filter(lambda message: message.from_user.is_bot == False)
+router = Router()
 
-@router.chat_member()
-async def on_chat_member_updated(event: ChatMemberUpdated):
-    if event.new_chat_member.status in [types.ChatMemberStatus.LEFT, types.ChatMemberStatus.KICKED]:
-        await event.bot.delete_message(chat_id=event.chat.id, message_id=event.from_user.id)
-    elif event.new_chat_member.status == types.ChatMemberStatus.MEMBER:
-        await event.bot.delete_message(chat_id=event.chat.id, message_id=event.from_user.id)
+from aiogram.filters import IS_MEMBER, IS_NOT_MEMBER
+
+
+@router.chat_member(ChatMemberUpdatedFilter(IS_MEMBER >> IS_NOT_MEMBER))
+async def on_user_leave(event: ChatMemberUpdated, message: Message):
+    await event.bot.delete_message(event.chat.id, message.message_id)
+
+@router.chat_member(ChatMemberUpdatedFilter(IS_NOT_MEMBER >> IS_MEMBER))
+async def on_user_join(event: ChatMemberUpdated, message: Message):
+    await event.bot.delete_message(event.chat.id, message.message_id)
